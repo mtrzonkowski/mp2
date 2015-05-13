@@ -5,6 +5,7 @@
  */
 package mp2;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,10 +14,19 @@ import java.util.Date;
  */
 public class Zawodnik extends Osoba{
     
+    private ArrayList<GraczWDruzynie> gracgWDrużynie;
     
 
     public Zawodnik(String imie, String nazwisko, String adres, Date dataUrodzenia) {
         super(imie, nazwisko, adres, dataUrodzenia);
     }
     
+    
+    public void addDruzyna(Druzyna druzyna){
+        
+    }
+    
+    public void removeDrużyna(Druzyna druzyna){
+        
+    }
 }
