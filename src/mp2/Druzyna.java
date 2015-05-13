@@ -74,6 +74,18 @@ public class Druzyna {
         }
     }
     
+    public void removeZawodnik(Zawodnik zawodnik){
+        if(!zawodnicyWDruzynie.isEmpty()){
+            for (ZawodnikWDruzynie zawodnikWDruzynie : zawodnicyWDruzynie) {
+                if(zawodnikWDruzynie.getZawodnik()==zawodnik){
+                    zawodnikWDruzynie.removeZawodnik();
+                    zawodnikWDruzynie.removeDruzyna();
+                    
+                }
+            }
+        }
+    }
+    
     public ArrayList<Zawodnik> getZawodnicy(){
         ArrayList<Zawodnik> zawodnicy=new ArrayList<Zawodnik>();
         for(ZawodnikWDruzynie zawodnikWDruzynie : zawodnicyWDruzynie){

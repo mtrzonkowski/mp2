@@ -45,13 +45,16 @@ public class ArgumentAsso {
 
         druzyna2.addZawodnik(zawodnik2);
         druzyna2.addZawodnik(zawodnik1);
-         druzyna2.addZawodnik(zawodnik2);
+        druzyna2.addZawodnik(zawodnik2);
         druzyna2.addZawodnik(zawodnik1);
         
         
         System.out.print(druzyna1.printZawodnicy());
         System.out.print(druzyna2.printZawodnicy());
         
-        
+        druzyna2.removeZawodnik(zawodnik1);
+
+        System.out.print(druzyna1.printZawodnicy());
+        System.out.print(druzyna2.printZawodnicy());
     }
 }

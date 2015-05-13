@@ -24,8 +24,18 @@ public class ZawodnikWDruzynie {
         this.druzyna = druzyna;
         zawodnik.getZawodnikWDrużynie().add(this);
         druzyna.getZawodnicyWDruzynie().add(this);
-   }
+    } 
 
+    public void removeZawodnik(){
+        zawodnik.getZawodnikWDrużynie().remove(this);
+        this.zawodnik=null;
+    }
+    public void removeDruzyna(){
+        druzyna.getZawodnicyWDruzynie().remove(this);
+        this.druzyna=null;
+    }
+    
+    
     public Zawodnik getZawodnik() {
         return zawodnik;
     }
@@ -72,10 +82,10 @@ public class ZawodnikWDruzynie {
 
     public boolean isZawodnikActive(){
         if(dataOdejscia!=null){
-            return true;
+            return false;
         }
         else{
-            return false;
+            return true;
         }
     }
     
