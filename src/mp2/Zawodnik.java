@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Zawodnik extends Osoba{
     
-    private ArrayList<GraczWDruzynie> graczWDrużynie;
+    private ArrayList<ZawodnikWDruzynie> graczWDrużynie;
     
 
     public Zawodnik(String imie, String nazwisko, String adres, Date dataUrodzenia) {

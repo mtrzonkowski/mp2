@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author mtrzonkowski
  */
-public class GraczWDruzynie {
+public class ZawodnikWDruzynie {
     
     private Zawodnik zawodnik;
     private Druzyna druzyna;    
@@ -19,9 +19,10 @@ public class GraczWDruzynie {
     private Date dataPrzystapienia;
     private Date dataOdejscia;
 
-    public GraczWDruzynie(Zawodnik zawodnik, Druzyna druzyna) {
+    public ZawodnikWDruzynie(Zawodnik zawodnik, Druzyna druzyna) {
         this.zawodnik = zawodnik;
         this.druzyna = druzyna;
+        
    }
 
     public Zawodnik getZawodnik() {
