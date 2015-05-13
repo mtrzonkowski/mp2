@@ -32,11 +32,13 @@ public class Mecz {
     }
 
     public void setSedzia(Sedzia sedzia) {
-        if(this.sedzia!=null){
+        if(this.sedzia!=null && this.sedzia!=sedzia){
             this.getSedzia().removeMecz(this);
         }
         this.sedzia=sedzia;
-        sedzia.addMecz(this);
+        if(sedzia!=null){
+            sedzia.addMecz(this);
+        }    
     }
     
     

@@ -22,7 +22,7 @@ public class Sedzia extends Osoba {
         super(imie, nazwisko, adres, dataUrodzenia);
         this.numerLicencji = numerLicencji;
         this.dataUzyskaniaLicencji = dataUzyskaniaLicencji;
-        mecze=new ArrayList<>();
+        mecze = new ArrayList<>();
     }
 
     public String getNumerLicencji() {
@@ -44,16 +44,16 @@ public class Sedzia extends Osoba {
     public void addMecz(Mecz mecz) {
         if (!mecze.contains(mecz)) {
             this.mecze.add(mecz);
-            if(mecz.isSedziaNull()){
-                mecz.setSedzia(this);
-            }
+            mecz.setSedzia(this);
         }
     }
 
     public void removeMecz(Mecz mecz) {
         if (mecze.contains(mecz)) {
-            mecz.setSedzia(null);
             this.mecze.remove(mecz);
+            if (!mecz.isSedziaNull()) {
+                mecz.setSedzia(null);
+            }
         }
     }
 
@@ -66,9 +66,9 @@ public class Sedzia extends Osoba {
     }
 
     public String showListaMeczy() {
-        String output="Sedzia "+this.getImie()+" "+this.getNazwisko()+" sędziuje następujące mecze:\n";
+        String output = "Sedzia " + this.getImie() + " " + this.getNazwisko() + " sędziuje następujące mecze:\n";
         for (Mecz mecz : mecze) {
-            output+=mecz+"\n";
+            output += mecz + "\n";
         }
         return output;
     }

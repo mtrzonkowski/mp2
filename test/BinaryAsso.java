@@ -82,6 +82,14 @@ public class BinaryAsso {
         sedzia2.addMecz(mecz2);
         mecz3.setSedzia(sedzia2);
 
+        System.out.println(mecz1);
+        System.out.println(sedzia1);
+        System.out.println(mecz1.getSedzia());
+        System.out.println(sedzia1.showListaMeczy());
+        System.out.println(sedzia2.showListaMeczy());
+        System.out.println("-----------------------------------------------");
+
+        
         assertEquals(sedzia1,mecz1.getSedzia());
         assertTrue(sedzia1.getLiczbaMeczy() != 0);
         assertFalse(sedzia2.getMeczeList().contains(mecz1));
@@ -89,6 +97,10 @@ public class BinaryAsso {
 
         mecz2.setSedzia(sedzia1);
         sedzia2.addMecz(mecz1);
+        
+        assertFalse(sedzia1.getMeczeList().contains(mecz1));
+        assertTrue(sedzia2.getMeczeList().contains(mecz1));
+        
         
         
         System.out.println(mecz1);
@@ -98,9 +110,6 @@ public class BinaryAsso {
         System.out.println(sedzia2.showListaMeczy());
         
         
-        
-        System.out.println(sedzia1.showListaMeczy());
-        System.out.println(sedzia2.showListaMeczy());
         
         
     }
