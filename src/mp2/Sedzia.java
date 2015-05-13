@@ -46,7 +46,6 @@ public class Sedzia extends Osoba {
             this.mecze.add(mecz);
             if(mecz.isSedziaNull()){
                 mecz.setSedzia(this);
-               
             }
         }
     }

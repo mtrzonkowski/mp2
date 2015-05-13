@@ -82,7 +82,7 @@ public class BinaryAsso {
         mecz3.setSedzia(sedzia2);
         assertEquals(sedzia1,mecz1.getSedzia());
     
-        assertTrue(sedzia1.getLiczbaMeczy() == 0);
+        assertTrue(sedzia1.getLiczbaMeczy() != 0);
         assertFalse(sedzia2.getMeczeList().contains(mecz1));
         assertTrue(sedzia2.getMeczeList().contains(mecz2));
         System.out.println(sedzia1.showListaMeczy());
