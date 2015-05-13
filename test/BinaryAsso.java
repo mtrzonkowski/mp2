@@ -64,32 +64,11 @@ public class BinaryAsso {
         assertNull(mecz1.getSedzia());
         assertTrue(sedzia1.getLiczbaMeczy() == 0);
 
-        System.out.println(mecz1);
-        System.out.println(sedzia1);
-        System.out.println(mecz1.getSedzia());
-        System.out.println(sedzia1.showListaMeczy());
-        System.out.println("-----------------------------------------------");
         
         mecz1.setSedzia(sedzia1);
-        
-        System.out.println(mecz1);
-        System.out.println(sedzia1);
-        System.out.println(mecz1.getSedzia());
-        System.out.println(sedzia1.showListaMeczy());
-        System.out.println(sedzia2.showListaMeczy());
-        System.out.println("-----------------------------------------------");
-
         sedzia2.addMecz(mecz2);
         mecz3.setSedzia(sedzia2);
 
-        System.out.println(mecz1);
-        System.out.println(sedzia1);
-        System.out.println(mecz1.getSedzia());
-        System.out.println(sedzia1.showListaMeczy());
-        System.out.println(sedzia2.showListaMeczy());
-        System.out.println("-----------------------------------------------");
-
-        
         assertEquals(sedzia1,mecz1.getSedzia());
         assertTrue(sedzia1.getLiczbaMeczy() != 0);
         assertFalse(sedzia2.getMeczeList().contains(mecz1));
@@ -100,27 +79,13 @@ public class BinaryAsso {
         
         assertFalse(sedzia1.getMeczeList().contains(mecz1));
         assertTrue(sedzia2.getMeczeList().contains(mecz1));
-        
-        System.out.println(mecz1);
-        System.out.println(sedzia1);
-        System.out.println(mecz1.getSedzia());
-        System.out.println(sedzia1.showListaMeczy());
-        System.out.println(sedzia2.showListaMeczy());
-        System.out.println("-----------------------------------------------");
-        
+                
         sedzia2.removeMecz(mecz1);
         mecz2.setSedzia(null);
         
-        System.out.println(mecz1);
-        System.out.println(sedzia1);
-        System.out.println(mecz1.getSedzia());
-        System.out.println(sedzia1.showListaMeczy());
-        System.out.println(sedzia2.showListaMeczy());
-        System.out.println("-----------------------------------------------");
-        
         assertTrue(sedzia1.getLiczbaMeczy() == 0);
-        ;
-        assertTrue(sedzia2.getMeczeList().contains(mecz2));
+        assertFalse(sedzia2.getMeczeList().contains(mecz1));
+        assertTrue(sedzia2.getMeczeList().contains(mecz3));
 
     
     }
