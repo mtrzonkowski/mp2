@@ -17,12 +17,13 @@ public class ZawodnikWDruzynie {
     private Druzyna druzyna;    
     private String pozycja;
     private Date dataPrzystapienia;
-    private Date dataOdejscia;
+    private Date dataOdejscia=null;
 
     public ZawodnikWDruzynie(Zawodnik zawodnik, Druzyna druzyna) {
         this.zawodnik = zawodnik;
         this.druzyna = druzyna;
-        
+        zawodnik.getZawodnikWDrużynie().add(this);
+        druzyna.getZawodnicyWDruzynie().add(this);
    }
 
     public Zawodnik getZawodnik() {
@@ -69,7 +70,14 @@ public class ZawodnikWDruzynie {
         this.dataOdejscia = dataOdejscia;
     }
 
-    
+    public boolean isZawodnikActive(){
+        if(dataOdejscia!=null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
     
 }

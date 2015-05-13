@@ -12,21 +12,34 @@ import java.util.Date;
  *
  * @author mtrzonkowski
  */
-public class Zawodnik extends Osoba{
-    
-    private ArrayList<ZawodnikWDruzynie> graczWDrużynie;
-    
+public class Zawodnik extends Osoba {
+
+    private ArrayList<ZawodnikWDruzynie> zawodnikWDruzynach=new ArrayList<ZawodnikWDruzynie>();
 
     public Zawodnik(String imie, String nazwisko, String adres, Date dataUrodzenia) {
         super(imie, nazwisko, adres, dataUrodzenia);
-    }
-    
-    
-    public void addDruzyna(Druzyna druzyna){
         
     }
-    
-    public void removeDrużyna(Druzyna druzyna){
-        
+
+    public ArrayList<ZawodnikWDruzynie> getZawodnikWDrużynie() {
+        return zawodnikWDruzynach;
+    }
+
+    public void addDruzyna(Druzyna druzyna) {
+        boolean nieMaAsocjacji = true;
+        if(!zawodnikWDruzynach.isEmpty()){
+            for (ZawodnikWDruzynie zawodnikWDruzynie : zawodnikWDruzynach) {
+                if(zawodnikWDruzynie.getDruzyna()== druzyna && zawodnikWDruzynie.isZawodnikActive()){
+                    nieMaAsocjacji=false;
+                }
+            }
+        }
+        if(nieMaAsocjacji){
+            new ZawodnikWDruzynie(this, druzyna);
+        }
+    }
+
+    public void removeDrużyna(Druzyna druzyna) {
+
     }
 }
