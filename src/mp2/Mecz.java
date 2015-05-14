@@ -23,6 +23,8 @@ public class Mecz {
         this.dataMeczu = dataMeczu;
     }
 
+    //Metody sedzia
+    
     public boolean isSedziaNull(){
         if(sedzia!=null)return false;
         else return true;
@@ -41,5 +43,7 @@ public class Mecz {
         }    
     }
     
+    //Metody sektor
+    //public void
     
 }

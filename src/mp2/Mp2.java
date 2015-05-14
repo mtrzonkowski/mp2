@@ -43,6 +43,10 @@ public class Mp2 {
         
         System.out.print(druzyna1.printZawodnicy());
         System.out.print(druzyna2.printZawodnicy());
+        
+        Pole pole1 =new Pole();
+        
+        
     }
 
 }

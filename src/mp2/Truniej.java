@@ -13,4 +13,6 @@ public class Truniej {
     
     private String nazwa;
     
+    
+    
 }

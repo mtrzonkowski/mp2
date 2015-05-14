@@ -17,6 +17,7 @@ public class Druzyna {
     private String nazwa;
     private Date dataPowstania;
     private Date dataZawieszenia=null;
+    
     private ArrayList<ZawodnikWDruzynie> zawodnicyWDruzynie=new ArrayList<ZawodnikWDruzynie>();
     
     public Druzyna(String nazwa, Date dataPowstania) {
@@ -24,6 +25,8 @@ public class Druzyna {
         this.dataPowstania = dataPowstania;
     }
 
+    //GET & SET
+    
     public String getNazwa() {
         return nazwa;
     }
@@ -59,6 +62,7 @@ public class Druzyna {
         this.dataZawieszenia = dataZawieszenia;
     }
     
+    //Metody związane z zawodnikiem
     
     public void addZawodnik(Zawodnik zawodnik){
        boolean nieMaAsocjacji = true;
@@ -101,5 +105,7 @@ public class Druzyna {
         }
         return output;
     }
+    
+    //Metody związane z Listami statrowymi
     
 }
