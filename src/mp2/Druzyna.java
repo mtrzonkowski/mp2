@@ -19,6 +19,7 @@ public class Druzyna {
     private Date dataZawieszenia=null;
     
     private ArrayList<ZawodnikWDruzynie> zawodnicyWDruzynie=new ArrayList<ZawodnikWDruzynie>();
+    private ArrayList<ListaStartowa> listyStartowe=new  ArrayList<ListaStartowa>();
     
     public Druzyna(String nazwa, Date dataPowstania) {
         this.nazwa = nazwa;
@@ -108,4 +109,12 @@ public class Druzyna {
     
     //Metody związane z Listami statrowymi
     
+    public ArrayList<ListaStartowa> getListyStartowe(){
+        return listyStartowe;
+    }
+    
+    public void addListaStartowa(ListaStartowa listaStartowa){
+        this.listyStartowe.add(listaStartowa);
+        listaStartowa.addDruzyna(this);
+    }
 }
