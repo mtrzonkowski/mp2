@@ -68,7 +68,7 @@ public class Mp2 {
         System.out.print(druzyna2.printListyStartowe());
         System.out.println("-------------------------------------------------------------------------------");
         
-        druzyna1.destroyDruzyna();
+        druzyna2.destroyDruzyna();
 
         System.out.print(ls1.printListaStartowa());
         System.out.print(ls2.printListaStartowa());

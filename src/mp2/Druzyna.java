@@ -118,7 +118,7 @@ public class Druzyna {
     }
     
     public void addListaStartowa(ListaStartowa listaStartowa){
-        if(!this.listyStartowe.contains(listaStartowa)){
+        if(!listaStartowa.fullListaStartowa() && !this.listyStartowe.contains(listaStartowa)){
            this.listyStartowe.add(listaStartowa);
            listaStartowa.addDruzyna(this);
         }
