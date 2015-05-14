@@ -114,7 +114,40 @@ public class Druzyna {
     }
     
     public void addListaStartowa(ListaStartowa listaStartowa){
-        this.listyStartowe.add(listaStartowa);
-        listaStartowa.addDruzyna(this);
+        if(!this.listyStartowe.contains(listaStartowa)){
+           this.listyStartowe.add(listaStartowa);
+           listaStartowa.addDruzyna(this);
+        }
+    }
+    
+    public void removeListaStartowa(ListaStartowa listaStartowa){
+        if(this.listyStartowe.contains(listaStartowa)){
+            listaStartowa.removeDruzyna(this);
+            this.listyStartowe.remove(listaStartowa);
+        }
+    }
+    
+    public String printListyStartowe(){
+        String output="Drużyna jest zapisana w listach starowych:\n";
+        if(listyStartowe.isEmpty()){
+            output+="żadnej.\n";
+        }
+        else{
+            for(ListaStartowa listaStartowa: listyStartowe){
+                output+=listaStartowa.toString()+"\n";
+            }
+        }
+        return output;
+    }
+    
+    //mój destruktor
+    public void destroyDruzyna(){
+        for(ListaStartowa listaStartowa:listyStartowe){
+            removeListaStartowa(listaStartowa);
+        }
+        for(ZawodnikWDruzynie zawodnikWDruzynie:zawodnicyWDruzynie){
+            zawodnikWDruzynie.removeZawodnik();
+            zawodnikWDruzynie.removeDruzyna();
+        }
     }
 }

@@ -61,8 +61,21 @@ public class ListaStartowa {
     }
 
     public void addDruzyna(Druzyna druzyna) {
-        druzyny.put(liczbaDruzyn, druzyna);
-        druzyna.getListyStartowe().add(this);
+        if (liczbaDruzyn < MAX_LICZBA_DRUZYN + 1) {
+            if (!druzyny.containsValue(druzyna)) {
+                druzyny.put(liczbaDruzyn++, druzyna);
+                druzyna.getListyStartowe().add(this);
+            }
+        } else {
+            System.out.println("Lista startowa " + this.nazwa + " jest już pełna");
+        }
+    }
+
+    public void removeDruzyna(Druzyna druzyna) {
+        if (druzyny.containsValue(druzyna)) {
+            druzyna.getListyStartowe().remove(this);
+            druzyny.remove(druzyna);
+        }
     }
 
     public String printListaStartowa() {
@@ -75,5 +88,13 @@ public class ListaStartowa {
             }
         }
         return output;
+    }
+    
+    public void destroyListaStartowa(){
+        if (!this.getDruzyny().isEmpty()) {
+            for (Integer numerStartowy : druzyny.keySet()) {
+                removeDruzyna(druzyny.get(numerStartowy));
+            }
+        }
     }
 }
