@@ -101,8 +101,12 @@ public class Druzyna {
     
     public String printZawodnicy(){
         String output="W drużynie "+this.getNazwa()+" są zawodnicy:\n";
-        for(ZawodnikWDruzynie zawodnikWDruzynie : zawodnicyWDruzynie){
-            output+="\t"+zawodnikWDruzynie.getZawodnik()+"\n";
+        if(zawodnicyWDruzynie.isEmpty()){
+            output+="Brak zawodnikiów\n";
+        }else{
+            for(ZawodnikWDruzynie zawodnikWDruzynie : zawodnicyWDruzynie){
+                output+="\t"+zawodnikWDruzynie.getZawodnik()+"\n";
+            }
         }
         return output;
     }
@@ -142,12 +146,12 @@ public class Druzyna {
     
     //mój destruktor
     public void destroyDruzyna(){
+        for(int i=zawodnicyWDruzynie.size()-1;i>-1;i--){
+            zawodnicyWDruzynie.get(i).destroyZawodnikWDruzynie();
+        }
         for(ListaStartowa listaStartowa:listyStartowe){
             removeListaStartowa(listaStartowa);
         }
-        for(ZawodnikWDruzynie zawodnikWDruzynie:zawodnicyWDruzynie){
-            zawodnikWDruzynie.removeZawodnik();
-            zawodnikWDruzynie.removeDruzyna();
-        }
+
     }
 }

@@ -89,5 +89,10 @@ public class ZawodnikWDruzynie {
         }
     }
     
+    public void destroyZawodnikWDruzynie(){
+        removeZawodnik();
+        removeDruzyna();
+ 
+    }
     
 }

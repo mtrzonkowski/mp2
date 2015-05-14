@@ -7,6 +7,7 @@
 import java.util.Date;
 import mp2.Druzyna;
 import mp2.Zawodnik;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,27 +35,62 @@ public class ArgumentAsso {
     }
 
     @Test
-    public void test() {
-        
-        
+    public void testZawodnikAddRemoveDruzyna(){
         
         zawodnik1.addDruzyna(druzyna1);
         zawodnik2.addDruzyna(druzyna1);
         zawodnik1.addDruzyna(druzyna1);
         zawodnik2.addDruzyna(druzyna1);
 
+        assertEquals(1,zawodnik1.getZawodnikWDrużynie().size());
+        assertEquals(1,zawodnik2.getZawodnikWDrużynie().size());
+        assertEquals(2,druzyna1.getZawodnicyWDruzynie().size());
+        assertEquals(0,druzyna2.getZawodnicyWDruzynie().size());
+        
+        zawodnik1.addDruzyna(druzyna2);
+        zawodnik2.addDruzyna(druzyna2);
+       
+        assertEquals(2,zawodnik1.getZawodnikWDrużynie().size());
+        assertEquals(2,zawodnik2.getZawodnikWDrużynie().size());
+        assertEquals(2,druzyna1.getZawodnicyWDruzynie().size());
+        assertEquals(2,druzyna2.getZawodnicyWDruzynie().size());
+
+        zawodnik1.removeDrużyna(druzyna2);
+        
+        assertEquals(1,zawodnik1.getZawodnikWDrużynie().size());
+        assertEquals(2,zawodnik2.getZawodnikWDrużynie().size());
+        assertEquals(2,druzyna1.getZawodnicyWDruzynie().size());
+        assertEquals(1,druzyna2.getZawodnicyWDruzynie().size());
+
+    }
+    
+    @Test
+    public void testDruzynaAddRemoveZawodnik(){
         druzyna2.addZawodnik(zawodnik2);
         druzyna2.addZawodnik(zawodnik1);
         druzyna2.addZawodnik(zawodnik2);
         druzyna2.addZawodnik(zawodnik1);
+
+        assertEquals(1,zawodnik1.getZawodnikWDrużynie().size());
+        assertEquals(1,zawodnik2.getZawodnikWDrużynie().size());
+        assertEquals(0,druzyna1.getZawodnicyWDruzynie().size());
+        assertEquals(2,druzyna2.getZawodnicyWDruzynie().size());
+
+        druzyna1.addZawodnik(zawodnik2);
+        druzyna1.addZawodnik(zawodnik1);
         
-        
-        System.out.print(druzyna1.printZawodnicy());
-        System.out.print(druzyna2.printZawodnicy());
+        assertEquals(2,zawodnik1.getZawodnikWDrużynie().size());
+        assertEquals(2,zawodnik2.getZawodnikWDrużynie().size());
+        assertEquals(2,druzyna1.getZawodnicyWDruzynie().size());
+        assertEquals(2,druzyna2.getZawodnicyWDruzynie().size());
         
         druzyna2.removeZawodnik(zawodnik1);
 
-        System.out.print(druzyna1.printZawodnicy());
-        System.out.print(druzyna2.printZawodnicy());
+        assertEquals(1,zawodnik1.getZawodnikWDrużynie().size());
+        assertEquals(2,zawodnik2.getZawodnikWDrużynie().size());
+        assertEquals(2,druzyna1.getZawodnicyWDruzynie().size());
+        assertEquals(1,druzyna2.getZawodnicyWDruzynie().size());
+        
     }
+    
 }
