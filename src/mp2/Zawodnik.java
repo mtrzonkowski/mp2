@@ -40,6 +40,13 @@ public class Zawodnik extends Osoba {
     }
 
     public void removeDrużyna(Druzyna druzyna) {
-
+       if(!zawodnikWDruzynach.isEmpty()){
+            for (int i=zawodnikWDruzynach.size()-1;i>-1;i--) {
+                if(zawodnikWDruzynach.get(i).getDruzyna()==druzyna){
+                    zawodnikWDruzynach.get(i).removeDruzyna();
+                    zawodnikWDruzynach.get(i).removeZawodnik();
+                }
+            }
+        }
     }
 }

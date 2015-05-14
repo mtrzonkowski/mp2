@@ -76,10 +76,10 @@ public class Druzyna {
     
     public void removeZawodnik(Zawodnik zawodnik){
         if(!zawodnicyWDruzynie.isEmpty()){
-            for (ZawodnikWDruzynie zawodnikWDruzynie : zawodnicyWDruzynie) {
-                if(zawodnikWDruzynie.getZawodnik()==zawodnik){
-                    zawodnikWDruzynie.removeZawodnik();
-                    zawodnikWDruzynie.removeDruzyna();
+            for (int i=zawodnicyWDruzynie.size()-1;i>-1;i--) {
+                if(zawodnicyWDruzynie.get(i).getZawodnik()==zawodnik){
+                    zawodnicyWDruzynie.get(i).removeZawodnik();
+                    zawodnicyWDruzynie.get(i).removeDruzyna();
                     
                 }
             }
