@@ -58,7 +58,12 @@ public class QualifyAsso {
         ls1.removeDruzyna(druzyna1);
         assertEquals(2,ls1.getDruzyny().size());
         assertFalse(ls1.getDruzyny().containsValue(druzyna1));
-        assertFalse(druzyna1.getListyStartowe().contains(ls1));
+        assertFalse(druzyna1.getListyStartowe().containsKey(ls1));
+
+        druzyna3.removeListaStartowa(ls1);
+        assertEquals(1,ls1.getDruzyny().size());
+        assertFalse(ls1.getDruzyny().containsValue(druzyna3));
+        assertFalse(druzyna3.getListyStartowe().containsKey(ls1));
     }
     
     @Test
