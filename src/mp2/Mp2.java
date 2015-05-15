@@ -41,7 +41,6 @@ public class Mp2 {
 
         System.out.print(druzyna1.printZawodnicy());
         System.out.print(druzyna2.printZawodnicy());
-        System.out.print(druzyna2.printListyStartowe());
         System.out.println("-------------------------------------------------------------------------------");
 
         ls1.addDruzyna(druzyna1);
@@ -53,7 +52,6 @@ public class Mp2 {
 
         System.out.print(druzyna1.printZawodnicy());
         System.out.print(druzyna2.printZawodnicy());
-        System.out.print(druzyna2.printListyStartowe());
         System.out.println("-------------------------------------------------------------------------------");
 
         ls1.removeDruzyna(druzyna2);
@@ -65,7 +63,6 @@ public class Mp2 {
 
         System.out.print(druzyna1.printZawodnicy());
         System.out.print(druzyna2.printZawodnicy());
-        System.out.print(druzyna2.printListyStartowe());
         System.out.println("-------------------------------------------------------------------------------");
         
         druzyna2.destroyDruzyna();
@@ -74,9 +71,11 @@ public class Mp2 {
         System.out.print(ls2.printListaStartowa());
         System.out.print(druzyna1.printZawodnicy());
         System.out.print(druzyna2.printZawodnicy());
-        System.out.print(druzyna2.printListyStartowe());
         System.out.println("-------------------------------------------------------------------------------");
-      
+        ls1.removeDruzyna(druzyna1);
+        System.out.println(ls1.printListaStartowa());
+        System.out.println(ls2.printListaStartowa());
+        System.out.println("-------------------------------------------------------------------------------");
     }
 
 }
