@@ -7,7 +7,6 @@ package mp2;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  *
@@ -20,7 +19,7 @@ public class Druzyna {
     private Date dataZawieszenia=null;
     
     private ArrayList<ZawodnikWDruzynie> zawodnicyWDruzynie=new ArrayList<ZawodnikWDruzynie>();
-    private HashMap<ListaStartowa,Integer> numeryStartowe=new  HashMap<ListaStartowa,Integer>();
+    private ArrayList<ListaStartowa> listyStartowe=new  ArrayList<ListaStartowa>();
     
     public Druzyna(String nazwa, Date dataPowstania) {
         this.nazwa = nazwa;
@@ -114,26 +113,45 @@ public class Druzyna {
     
     //Metody związane z Listami statrowymi
     
-    public HashMap<ListaStartowa,Integer> getNumeryStartowe(){
-        return numeryStartowe;
+    public ArrayList<ListaStartowa> getListyStartowe(){
+        return listyStartowe;
     }
     
-    public void addNumerStartowy(ListaStartowa listaStartowa){
-        if(!listaStartowa.fullListaStartowa() && !this.numeryStartowe.containsKey(listaStartowa)){
-            listaStartowa.addDruzyna(this);
+    public void addListaStartowa(ListaStartowa listaStartowa){
+        if(!listaStartowa.fullListaStartowa() && !this.listyStartowe.contains(listaStartowa)){
+           this.listyStartowe.add(listaStartowa);
+           listaStartowa.addDruzyna(this);
         }
     }
     
-    public void removeNumerStartowy(ListaStartowa listaStartowa){
-        if(this.numeryStartowe.containsKey(listaStartowa)){
-            listaStartowa.getDruzyny().remove(this.getNumeryStartowe().get(listaStartowa));
-            this.numeryStartowe.remove(listaStartowa);
+    public void removeListaStartowa(ListaStartowa listaStartowa){
+        if(this.listyStartowe.contains(listaStartowa)){
+            listaStartowa.removeDruzyna(this);
+            this.listyStartowe.remove(listaStartowa);
         }
+    }
+    
+    public String printListyStartowe(){
+        String output="Drużyna jest zapisana w listach starowych:\n";
+        if(listyStartowe.isEmpty()){
+            output+="żadnej.\n";
+        }
+        else{
+            for(ListaStartowa listaStartowa: listyStartowe){
+                output+=listaStartowa.toString()+"\n";
+            }
+        }
+        return output;
     }
     
     //mój destruktor
     public void destroyDruzyna(){
-
+        for(int i=zawodnicyWDruzynie.size()-1;i>-1;i--){
+            zawodnicyWDruzynie.get(i).destroyZawodnikWDruzynie();
+        }
+        for(ListaStartowa listaStartowa:listyStartowe){
+            removeListaStartowa(listaStartowa);
+        }
 
     }
 }
