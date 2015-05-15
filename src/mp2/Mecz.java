@@ -16,6 +16,7 @@ public class Mecz {
     private Sedzia sedzia;
     
     private Date dataMeczu;
+    private Pole
 
     
     public Mecz(Sedzia sedzia, Date dataMeczu) {
