@@ -17,53 +17,35 @@ public class Pole {
     private String adres;
     private ArrayList<Sektor> sektory;
 
-    public void createSektor(String sektorNazwa, String sektorOpis, int dlugosc, int szerokosc) {
-        sektory.add(new Sektor(sektorNazwa, sektorOpis, dlugosc, szerokosc));
+    public Pole(String nazwa, String adres) {
+        this.nazwa = nazwa;
+        this.adres = adres;
     }
 
-    private class Sektor {
+    public String getNazwa() {
+        return nazwa;
+    }
 
-        private String sektorNazwa;
-        private String sektorOpis;
-        private int dlugosc;
-        private int szerokosc;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
 
-        private ArrayList<Mecz> mecze;
+    public String getAdres() {
+        return adres;
+    }
 
-        public Sektor(String sektorNazwa, String sektorOpis, int dlugosc, int serokosc) {
-            this.sektorNazwa = sektorNazwa;
-            this.sektorOpis = sektorOpis;
-            this.dlugosc = dlugosc;
-            this.szerokosc = serokosc;
-        }
+    public void setAdres(String adres) {
+        this.adres = adres;
+    }
 
-        private void addMecz(Mecz mecz) {
-            mecze.add(mecz);
-//            mecz.
-        }
-
-        private void removeMecz(Mecz mecz){
-            mecze.remove(mecz);
-       
-        }
+    public void addSektor(){
         
-        private ArrayList getMecze() {
-            return mecze;
-        }
-
-        private String getListaMeczyString() {
-            String output = "Lista meczy";
-            if (mecze.isEmpty()) {
-                output += " jest pusta";
-            } else {
-                output += ":\n";
-                for (Mecz mecz : mecze) {
-                    output += mecz.toString() + "\n";
-                }
-            }
-            return output;
-        }
-
+    }
+    public void addSektor(String sektorNazwa,String sektorOpis, int dlugosc,int szerokosc){
+        
+    }
+    public void addSektor(Sektor sektor){
+        if(!this.sektory.contains(sektor)){
     }
 
 }
