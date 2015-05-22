@@ -34,21 +34,23 @@ public class CompositionAsso {
         pole3 = new Pole("Kanarkowe pole", "ul. Astronautów 32 13-131 Afryka");
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void testCreateSektor() throws Exception {
 
-        pole1.addSektor(Sektor.createSektor(pole1, nazwaSektora1, opisSektor1, szerokosc, dlugosc));
-        pole2.addSektor(pole1.getSektor(nazwaSektora1));
+        pole1.newSektor(nazwaSektora1, opisSektor1, szerokosc, dlugosc);
+        pole2.newSektor(nazwaSektora1, opisSektor1, szerokosc, dlugosc);
 
         assertTrue(pole1.getSektory().containsKey(nazwaSektora1));
-        assertFalse(pole2.getSektory().containsKey(nazwaSektora1));
+        assertTrue(pole2.getSektory().containsKey(nazwaSektora1));
+        assertFalse(pole1.getSektor(nazwaSektora1).equals(pole2.getSektor(nazwaSektora1)));
+        assertFalse(pole2.getSektor(nazwaSektora1).equals(pole1.getSektor(nazwaSektora1)));
     }
     @Test
     public void testRemoveSektor() throws Exception{
         assertEquals(pole1.getSektory().size(), 0);
-        pole1.addSektor(Sektor.createSektor(pole1, nazwaSektora2, opisSektor2, szerokosc, dlugosc));
-//        assertEquals(pole1.getSektory().size(), 1);
-        pole1.removeSektor(pole1.getSektor(nazwaSektora1));
+        pole1.newSektor(nazwaSektora2, opisSektor2, szerokosc, dlugosc);
+        assertEquals(pole1.getSektory().size(), 1);
+        pole1.removeSektor(pole1.getSektor(nazwaSektora2));
         assertEquals(pole1.getSektory().size(), 0);
     }
     

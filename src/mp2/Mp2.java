@@ -89,8 +89,14 @@ public class Mp2 {
         pole3=new Pole("Kanarkowe pole", "ul. Astronautów 32 13-131 Afryka");
 
         String nazwaSektora1="Psi sektor nazwa1";
-         pole1.addSektor(Sektor.createSektor(pole1, nazwaSektora1, "Same dalmatyńczyki", 10, 10));
-         pole2.addSektor(pole1.getSektor(nazwaSektora1));
+         pole1.newSektor(nazwaSektora1, "Same dalmatyńczyki", 10, 10);
+         pole2.newSektor(nazwaSektora1, "Same dalmatyńczyki", 10, 10);
+         
+         System.out.println(pole1.toString());
+         System.out.println(pole2.toString());
+         
+         pole1.removeSektor(pole1.getSektor(nazwaSektora1));
+         System.out.println(pole1);
     }
 
 }

@@ -39,24 +39,14 @@ public class Pole {
         this.adres = adres;
     }
 
-    public void addSektor(Sektor sektor) throws Exception {
-        if (!sektory.containsValue(sektor)) {
-            if (sektor.getPole() == null) {
-                this.sektory.put(sektor.getSektorNazwa(), sektor);
-            } else {
-                throw new Exception("Sektor " + sektor.getSektorNazwa() + " należy do pola " + sektor.getPole().getNazwa());
-            }
-        }
-    }
-
     public void newSektor(String sektorNazwa, String sektorOpis, int dlugosc, int szerokosc) throws Exception {
         this.sektory.put(sektorNazwa, Sektor.createSektor(this, sektorNazwa, sektorOpis, dlugosc, szerokosc));
     }
 
     public void removeSektor(Sektor sektor) {
         if (!sektory.containsKey(sektor)) {
-            sektor.destroySektor();
             this.sektory.remove(sektor.getSektorNazwa());
+            sektor.destroySektor();
         }
     }
 
@@ -75,5 +65,9 @@ public class Pole {
             output += "\t" + sektory.get(nazwa) + "\n";
         }
         return output;
+    }
+
+    void newSektor(Pole pole1, String nazwaSektora2, String opisSektor2, int szerokosc, int dlugosc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
