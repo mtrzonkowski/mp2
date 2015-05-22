@@ -41,11 +41,10 @@ public class Pole {
 
     public void addSektor(Sektor sektor) throws Exception {
         if (!sektory.containsValue(sektor)) {
-            if(sektor.getPole()==null){
+            if (sektor.getPole() == null) {
                 this.sektory.put(sektor.getSektorNazwa(), sektor);
-            }
-            else{
-                throw new Exception("Sektor "+sektor.getSektorNazwa()+" należy do pola "+sektor.getPole().getNazwa());
+            } else {
+                throw new Exception("Sektor " + sektor.getSektorNazwa() + " należy do pola " + sektor.getPole().getNazwa());
             }
         }
     }
@@ -55,7 +54,10 @@ public class Pole {
     }
 
     public void removeSektor(Sektor sektor) {
-        sektor.destroySektor();
+        if (!sektory.containsKey(sektor)) {
+            sektor.destroySektor();
+            this.sektory.remove(sektor.getSektorNazwa());
+        }
     }
 
     public Sektor getSektor(String nazwaSektora) {
@@ -65,12 +67,12 @@ public class Pole {
     public HashMap<String, Sektor> getSektory() {
         return sektory;
     }
-    
+
     @Override
-    public String toString(){
-        String output="Pole "+this.nazwa+" składa się z sektorów:\n";
-        for(String nazwa:sektory.keySet()){
-            output+="\t"+sektory.get(nazwa)+"\n";
+    public String toString() {
+        String output = "Pole " + this.nazwa + " składa się z sektorów:\n";
+        for (String nazwa : sektory.keySet()) {
+            output += "\t" + sektory.get(nazwa) + "\n";
         }
         return output;
     }

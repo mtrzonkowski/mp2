@@ -23,7 +23,7 @@ public class Sektor {
     private int szerokosc;
     private ArrayList<Mecz> mecze;
 
-    private Sektor(Pole pole, String sektorNazwa, String sektorOpis, int dlugosc, int serokosc) {
+    private Sektor(Pole pole, String sektorNazwa, String sektorOpis, int dlugosc, int serokosc) throws Exception {
         this.pole = pole;
         this.sektorNazwa = sektorNazwa;
         this.sektorOpis = sektorOpis;
