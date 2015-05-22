@@ -20,38 +20,53 @@ public class CompositionAsso {
     private Pole pole1;
     private Pole pole2;
     private Pole pole3;
-    String nazwaSektora1 = "Psi sektor nazwa1";
-    String nazwaSektora2 = "Psi sektor nazwa2";
-    String opisSektor1 = "Same dalmatyńczyki";
-    String opisSektor2 = "Same ratlerki";
-    int szerokosc = 10;
-    int dlugosc = 20;
+
+    private String nazwaSektora1 = "Psi sektor nazwa1";
+    private String nazwaSektora2 = "Psi sektor nazwa2";
+    private String opisSektor1 = "Same dalmatyńczyki";
+    private String opisSektor2 = "Same ratlerki";
+    private int szerokosc = 10;
+    private int dlugosc = 20;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         pole1 = new Pole("Psie pole", "ul. Internautów 78 09-055 Ameryka");
         pole2 = new Pole("Kocie pole", "ul. Kosmonautów 96 65-585 Azja");
         pole3 = new Pole("Kanarkowe pole", "ul. Astronautów 32 13-131 Afryka");
+        
     }
 
     @Test
     public void testCreateSektor() throws Exception {
-
-        pole1.newSektor(nazwaSektora1, opisSektor1, szerokosc, dlugosc);
-        pole2.newSektor(nazwaSektora1, opisSektor1, szerokosc, dlugosc);
-
-        assertTrue(pole1.getSektory().containsKey(nazwaSektora1));
-        assertTrue(pole2.getSektory().containsKey(nazwaSektora1));
-        assertFalse(pole1.getSektor(nazwaSektora1).equals(pole2.getSektor(nazwaSektora1)));
-        assertFalse(pole2.getSektor(nazwaSektora1).equals(pole1.getSektor(nazwaSektora1)));
+        Sektor sek1=Sektor.createSektor(pole1, opisSektor1, opisSektor1, dlugosc, szerokosc);
+        Sektor sek2=Sektor.createSektor(pole2, opisSektor1, opisSektor1, dlugosc, szerokosc);
+        
+        assertTrue(pole1.getSektory().contains(sek1));
+        assertTrue(pole2.getSektory().contains(sek2));
     }
+
     @Test
     public void testRemoveSektor() throws Exception{
         assertEquals(pole1.getSektory().size(), 0);
-        pole1.newSektor(nazwaSektora2, opisSektor2, szerokosc, dlugosc);
-        assertEquals(pole1.getSektory().size(), 1);
-        pole1.removeSektor(pole1.getSektor(nazwaSektora2));
-        assertEquals(pole1.getSektory().size(), 0);
+        
+        
+        Sektor sek1=Sektor.createSektor(pole1, opisSektor1, opisSektor1, dlugosc, szerokosc);
+        assertEquals(1,pole1.getSektory().size() );
+        Sektor sek2=Sektor.createSektor(pole2, opisSektor2, opisSektor1, dlugosc, szerokosc);
+        assertEquals(1,pole1.getSektory().size() );
+        
+        pole1.removeSektor(sek1);
+        assertEquals(0,pole1.getSektory().size());
+    }
+   
+    
+    @Test(expected = Exception.class)
+    public void testOneOwner() throws Exception{
+        assertEquals(0, pole1.getSektory().size());
+        Sektor sek1=Sektor.createSektor(pole1, nazwaSektora1, opisSektor1, dlugosc, szerokosc);
+        pole2.addSektor(sek1);
+        
+ 
     }
     
 }

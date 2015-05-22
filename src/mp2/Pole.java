@@ -16,7 +16,8 @@ public class Pole {
 
     private String nazwa;
     private String adres;
-    private HashMap<String, Sektor> sektory = new HashMap<String, Sektor>();
+    private ArrayList<Sektor>sektory = new ArrayList<Sektor>();
+    private static ArrayList<Sektor>wszystkieSektory = new ArrayList<Sektor>();
 
     public Pole(String nazwa, String adres) {
         this.nazwa = nazwa;
@@ -39,35 +40,39 @@ public class Pole {
         this.adres = adres;
     }
 
-    public void newSektor(String sektorNazwa, String sektorOpis, int dlugosc, int szerokosc) throws Exception {
-        this.sektory.put(sektorNazwa, Sektor.createSektor(this, sektorNazwa, sektorOpis, dlugosc, szerokosc));
+    public void addSektor(Sektor sektor) throws Exception {
+        if(wszystkieSektory.contains(sektor)){
+                throw new Exception("Sektor "+sektor+" nalezydo "+sektor.getPole());
+        }
+        wszystkieSektory.add(sektor);
+        if(!sektory.contains(sektor)){
+            sektory.add(sektor);
+        }
     }
 
     public void removeSektor(Sektor sektor) {
-        if (!sektory.containsKey(sektor)) {
-            this.sektory.remove(sektor.getSektorNazwa());
+        if (sektory.contains(sektor)) {
+            sektory.remove(sektor);
+            wszystkieSektory.remove(sektor);
             sektor.destroySektor();
         }
     }
 
-    public Sektor getSektor(String nazwaSektora) {
-        return this.sektory.get(nazwaSektora);
+ 
+    public ArrayList<Sektor> getSektory() {
+        return sektory;
     }
 
-    public HashMap<String, Sektor> getSektory() {
-        return sektory;
+    public static ArrayList<Sektor> getWszystkieSektory() {
+        return wszystkieSektory;
     }
 
     @Override
     public String toString() {
         String output = "Pole " + this.nazwa + " składa się z sektorów:\n";
-        for (String nazwa : sektory.keySet()) {
-            output += "\t" + sektory.get(nazwa) + "\n";
+        for (Sektor sektor : sektory) {
+            output += "\t" + sektor + "\n";
         }
         return output;
-    }
-
-    void newSektor(Pole pole1, String nazwaSektora2, String opisSektor2, int szerokosc, int dlugosc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -23,18 +23,20 @@ public class Sektor {
     private int szerokosc;
     private ArrayList<Mecz> mecze=new ArrayList<Mecz>();
 
-    private Sektor(Pole pole, String sektorNazwa, String sektorOpis, int dlugosc, int serokosc) throws Exception {
+    private Sektor(Pole pole, String sektorNazwa, String sektorOpis, int dlugosc, int szerokosc) throws Exception {
         this.pole = pole;
         this.sektorNazwa = sektorNazwa;
         this.sektorOpis = sektorOpis;
         this.dlugosc = dlugosc;
-        this.szerokosc = serokosc;
+        this.szerokosc = szerokosc;
+  
     }
 
     public static Sektor createSektor(Pole pole, String sektorNazwa, String sektorOpis, int dlugosc, int szerokosc) throws Exception {
         if (pole != null) {
             Sektor sektor = new Sektor(pole, sektorNazwa, sektorOpis, dlugosc, szerokosc);
             sektorEkstensje.add(sektor);
+            pole.addSektor(sektor);
             return sektor;
         } else {
             throw new Exception("Nie można dodać sektora do niczego");
@@ -49,7 +51,10 @@ public class Sektor {
             mecze.clear();
         }
 //        pole
-        pole = null;
+        if(pole.getSektory().contains(this)){
+            pole.removeSektor(this);
+        }
+        if(!pole.equals(null))pole = null;
     }
 
     public Pole getPole() {

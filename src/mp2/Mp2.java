@@ -89,14 +89,22 @@ public class Mp2 {
         pole3=new Pole("Kanarkowe pole", "ul. Astronautów 32 13-131 Afryka");
 
         String nazwaSektora1="Psi sektor nazwa1";
-         pole1.newSektor(nazwaSektora1, "Same dalmatyńczyki", 10, 10);
-         pole2.newSektor(nazwaSektora1, "Same dalmatyńczyki", 10, 10);
-         
+//         pole1.newSektor(nazwaSektora1, "Same dalmatyńczyki", 10, 10);
+//         pole2.newSektor(nazwaSektora1, "Same dalmatyńczyki", 10, 10);
+//         
          System.out.println(pole1.toString());
          System.out.println(pole2.toString());
          
-         pole1.removeSektor(pole1.getSektor(nazwaSektora1));
-         System.out.println(pole1);
+//         pole1.removeSektor(pole1.getSektor(nazwa
+       Sektor sek1=Sektor.createSektor(pole1, "Test1", "Test2 ", 12, 13);
+        
+         System.out.println(pole1.toString());
+         pole2.addSektor(sek1);
+         System.out.println(pole2.toString());
+         pole1.removeSektor(sek1);
+         System.out.println(pole1.toString());
+ 
+
     }
 
 }
