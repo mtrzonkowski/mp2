@@ -102,8 +102,9 @@ public class ListaStartowa {
     public void destroyListaStartowa() {
         if (!this.getDruzyny().isEmpty()) {
             for (Integer numerStartowy : druzyny.keySet()) {
-                removeDruzyna(druzyny.get(numerStartowy));
+                this.getDruzyny().get(numerStartowy).getListyStartowe().remove(this);
             }
+            druzyny.clear();
         }
     }
 }

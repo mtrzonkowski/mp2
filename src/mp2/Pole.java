@@ -6,6 +6,7 @@
 package mp2;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -15,7 +16,7 @@ public class Pole {
 
     private String nazwa;
     private String adres;
-    private ArrayList<Sektor> sektory;
+    private HashMap<String, Sektor> sektory = new HashMap<String, Sektor>();
 
     public Pole(String nazwa, String adres) {
         this.nazwa = nazwa;
@@ -38,14 +39,39 @@ public class Pole {
         this.adres = adres;
     }
 
-    public void addSektor(){
-        
-    }
-    public void addSektor(String sektorNazwa,String sektorOpis, int dlugosc,int szerokosc){
-        
-    }
-    public void addSektor(Sektor sektor){
-        if(!this.sektory.contains(sektor)){
+    public void addSektor(Sektor sektor) throws Exception {
+        if (!sektory.containsValue(sektor)) {
+            if(sektor.getPole()==null){
+                this.sektory.put(sektor.getSektorNazwa(), sektor);
+            }
+            else{
+                throw new Exception("Sektor "+sektor.getSektorNazwa()+" należy do pola "+sektor.getPole().getNazwa());
+            }
+        }
     }
 
+    public void newSektor(String sektorNazwa, String sektorOpis, int dlugosc, int szerokosc) throws Exception {
+        this.sektory.put(sektorNazwa, Sektor.createSektor(this, sektorNazwa, sektorOpis, dlugosc, szerokosc));
+    }
+
+    public void removeSektor(Sektor sektor) {
+        sektor.destroySektor();
+    }
+
+    public Sektor getSektor(String nazwaSektora) {
+        return this.sektory.get(nazwaSektora);
+    }
+
+    public HashMap<String, Sektor> getSektory() {
+        return sektory;
+    }
+    
+    @Override
+    public String toString(){
+        String output="Pole "+this.nazwa+" składa się z sektorów:\n";
+        for(String nazwa:sektory.keySet()){
+            output+="\t"+sektory.get(nazwa)+"\n";
+        }
+        return output;
+    }
 }

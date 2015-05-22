@@ -62,9 +62,12 @@ public class BinaryAsso {
     }
 
     @Test
-    public void testAddSedziaMecz() {
+    public void testAddChangeRemoveSedziaMecz() {
         assertNull(mecz1.getSedzia());
+        assertNull(mecz2.getSedzia());
+        assertNull(mecz3.getSedzia());
         assertTrue(sedzia1.getLiczbaMeczy() == 0);
+        assertTrue(sedzia2.getLiczbaMeczy() == 0);
 
         
         mecz1.setSedzia(sedzia1);

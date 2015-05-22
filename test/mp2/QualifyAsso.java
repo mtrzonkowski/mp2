@@ -7,12 +7,8 @@ package mp2;
  */
 
 import java.util.Date;
-import mp2.Druzyna;
-import mp2.ListaStartowa;
-import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 

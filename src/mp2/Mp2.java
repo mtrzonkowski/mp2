@@ -16,7 +16,7 @@ public class Mp2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Zawodnik zawodnik1 = new Zawodnik("Michał", "Trzonkowski", "Zakole Wiktorowo 30a", new Date(1983, 5, 17));
         Zawodnik zawodnik2 = new Zawodnik("Radosław", "Wichrowski", "Warszawa grochów", new Date(1981, 12, 12));
         Druzyna druzyna1 = new Druzyna("Cytrynowa śmierć", new Date(2012, 10, 01));
@@ -76,6 +76,21 @@ public class Mp2 {
         System.out.println(ls1.printListaStartowa());
         System.out.println(ls2.printListaStartowa());
         System.out.println("-------------------------------------------------------------------------------");
+        
+        
+    
+    Pole pole1;
+    Pole pole2;
+    Pole pole3;
+    
+  
+        pole1=new Pole("Psie pole","ul. Internautów 78 09-055 Ameryka");
+        pole2=new Pole("Kocie pole","ul. Kosmonautów 96 65-585 Azja");
+        pole3=new Pole("Kanarkowe pole", "ul. Astronautów 32 13-131 Afryka");
+
+        String nazwaSektora1="Psi sektor nazwa1";
+         pole1.addSektor(Sektor.createSektor(pole1, nazwaSektora1, "Same dalmatyńczyki", 10, 10));
+         pole2.addSektor(pole1.getSektor(nazwaSektora1));
     }
 
 }
