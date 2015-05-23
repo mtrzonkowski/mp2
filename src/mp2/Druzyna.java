@@ -20,11 +20,13 @@ public class Druzyna {
     private Date dataZawieszenia=null;
     
     private ArrayList<ZawodnikWDruzynie> zawodnicyWDruzynie=new ArrayList<ZawodnikWDruzynie>();
-    private HashMap<ListaStartowa,Integer> listyStartowe=new  HashMap<ListaStartowa,Integer>();
+    private ArrayList<ListaStartowa> listyStartowe=new  ArrayList<ListaStartowa>();
+    private Integer numerStartowy;
     
-    public Druzyna(String nazwa, Date dataPowstania) {
+    public Druzyna(String nazwa, Date dataPowstania,Integer numerStartowy) {
         this.nazwa = nazwa;
         this.dataPowstania = dataPowstania;
+        this.numerStartowy=numerStartowy;
     }
 
     //GET & SET
@@ -111,21 +113,25 @@ public class Druzyna {
         }
         return output;
     }
+
+    public Integer getNumerStartowy() {
+        return numerStartowy;
+    }
     
     //Metody związane z Listami statrowymi
     
-    public HashMap<ListaStartowa, Integer> getListyStartowe(){
+    public ArrayList<ListaStartowa> getListyStartowe(){
         return listyStartowe;
     }
     
     public void addListaStartowa(ListaStartowa listaStartowa){
-        if(!listaStartowa.fullListaStartowa() && !this.listyStartowe.containsKey(listaStartowa)){
+        if(!listaStartowa.fullListaStartowa() && !this.listyStartowe.contains(listaStartowa)){
            listaStartowa.addDruzyna(this);
         }
     }
     
     public void removeListaStartowa(ListaStartowa listaStartowa){
-        if(this.listyStartowe.containsKey(listaStartowa)){
+        if(this.listyStartowe.contains(listaStartowa)){
             listaStartowa.removeDruzyna(this);
             this.listyStartowe.remove(listaStartowa);
         }

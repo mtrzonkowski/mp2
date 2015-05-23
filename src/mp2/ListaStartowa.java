@@ -71,9 +71,8 @@ public class ListaStartowa {
     public void addDruzyna(Druzyna druzyna) {
         if (!fullListaStartowa()) {
             if (!druzyny.containsValue(druzyna)) {
-                liczbaDruzyn++;
-                druzyny.put(liczbaDruzyn, druzyna);
-                druzyna.getListyStartowe().put(this,liczbaDruzyn);
+                druzyny.put(druzyna.getNumerStartowy(), druzyna);
+                druzyna.getListyStartowe().add(this);
             }
         } else {
             System.out.println("Lista startowa " + this.nazwa + " jest już pełna");
@@ -82,7 +81,7 @@ public class ListaStartowa {
 
     public void removeDruzyna(Druzyna druzyna) {
         if (druzyny.containsValue(druzyna)) {
-            druzyny.remove(druzyna.getListyStartowe().get(this));
+            druzyny.remove(druzyna.getNumerStartowy());
             druzyna.getListyStartowe().remove(this);
         }
     }

@@ -30,9 +30,9 @@ public class QualifyAsso {
 
     @Before
     public void setUp() {
-        druzyna1 = new Druzyna("Czerwone Gacie Martyny", new Date(2012, 2, 5));
-        druzyna2 = new Druzyna("Błękitne Figi Kasi", new Date(2013, 9, 15));
-        druzyna3 = new Druzyna("Czarne Stringi Karola", new Date(2015, 1, 1));
+        druzyna1 = new Druzyna("Czerwone Gacie Martyny", new Date(2012, 2, 5),1);
+        druzyna2 = new Druzyna("Błękitne Figi Kasi", new Date(2013, 9, 15),2);
+        druzyna3 = new Druzyna("Czarne Stringi Karola", new Date(2015, 1, 1),3);
 
         ls1 = new ListaStartowa("Wiek", "18-25", 20);
         ls2 = new ListaStartowa("Płeć", "Tylko laski", 2);
@@ -56,12 +56,12 @@ public class QualifyAsso {
         ls1.removeDruzyna(druzyna1);
         assertEquals(2,ls1.getDruzyny().size());
         assertFalse(ls1.getDruzyny().containsValue(druzyna1));
-        assertFalse(druzyna1.getListyStartowe().containsKey(ls1));
+        assertFalse(druzyna1.getListyStartowe().contains(ls1));
 
         druzyna3.removeListaStartowa(ls1);
         assertEquals(1,ls1.getDruzyny().size());
         assertFalse(ls1.getDruzyny().containsValue(druzyna3));
-        assertFalse(druzyna3.getListyStartowe().containsKey(ls1));
+        assertFalse(druzyna3.getListyStartowe().contains(ls1));
     }
     
     @Test

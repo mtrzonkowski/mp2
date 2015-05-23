@@ -19,8 +19,8 @@ public class Mp2 {
     public static void main(String[] args) throws Exception {
         Zawodnik zawodnik1 = new Zawodnik("Michał", "Trzonkowski", "Zakole Wiktorowo 30a", new Date(1983, 5, 17));
         Zawodnik zawodnik2 = new Zawodnik("Radosław", "Wichrowski", "Warszawa grochów", new Date(1981, 12, 12));
-        Druzyna druzyna1 = new Druzyna("Cytrynowa śmierć", new Date(2012, 10, 01));
-        Druzyna druzyna2 = new Druzyna("Brzeszczotem po klacie", new Date(2013, 2, 15));
+        Druzyna druzyna1 = new Druzyna("Cytrynowa śmierć", new Date(2012, 10, 01),1);
+        Druzyna druzyna2 = new Druzyna("Brzeszczotem po klacie", new Date(2013, 2, 15),2);
         ListaStartowa ls1 = new ListaStartowa("Profesjonalna", "Profesjonaliści", 10);
         ListaStartowa ls2 = new ListaStartowa("Amatorzy", "Amatorzy", 10);;
 
@@ -99,7 +99,12 @@ public class Mp2 {
        Sektor sek1=Sektor.createSektor(pole1, "Test1", "Test2 ", 12, 13);
         
          System.out.println(pole1.toString());
-         pole2.addSektor(sek1);
+         try{
+            pole2.addSektor(sek1);
+         }catch(Exception e){
+             System.out.println(e);
+         }
+         
          System.out.println(pole2.toString());
          pole1.removeSektor(sek1);
          System.out.println(pole1.toString());
