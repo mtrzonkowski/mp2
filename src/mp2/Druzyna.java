@@ -125,15 +125,18 @@ public class Druzyna {
     }
     
     public void addListaStartowa(ListaStartowa listaStartowa){
-        if(!listaStartowa.fullListaStartowa() && !this.listyStartowe.contains(listaStartowa)){
-           listaStartowa.addDruzyna(this);
+        if(!listaStartowa.fullListaStartowa() && !listaStartowa.getDruzyny().containsKey(this.numerStartowy)){
+            listaStartowa.addDruzyna(this);
+        }
+        if(!listyStartowe.contains(listaStartowa)){
+            listyStartowe.add(listaStartowa);
         }
     }
     
     public void removeListaStartowa(ListaStartowa listaStartowa){
         if(this.listyStartowe.contains(listaStartowa)){
-            listaStartowa.removeDruzyna(this);
             this.listyStartowe.remove(listaStartowa);
+            listaStartowa.removeDruzyna(this);
         }
     }
     

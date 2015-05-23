@@ -70,16 +70,16 @@ public class QualifyAsso {
         ls2.addDruzyna(druzyna2);
         
         assertEquals(2,ls2.getDruzyny().size());
-        assertEquals(2,ls2.getLiczbaDruzyn());
+        assertEquals(2,ls2.getSizeListy());
         
         ls2.addDruzyna(druzyna3);
 
         assertEquals(2,ls2.getDruzyny().size());
-        assertEquals(2,ls2.getLiczbaDruzyn());
+        assertEquals(2,ls2.getSizeListy());
         
         druzyna3.addListaStartowa(ls2);
         
         assertEquals(2,ls2.getDruzyny().size());
-        assertEquals(2,ls2.getLiczbaDruzyn());
+        assertEquals(2,ls2.getSizeListy());
     }
 }

@@ -18,7 +18,6 @@ public class ListaStartowa {
     private String kryterium;
     private String nazwa;
 
-    private int liczbaDruzyn = 0;
 
     private HashMap<Integer, Druzyna> druzyny = new HashMap<Integer, Druzyna>();
 
@@ -43,15 +42,10 @@ public class ListaStartowa {
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
     }
-
-    public int getLiczbaDruzyn() {
-        return liczbaDruzyn;
+    public int getSizeListy(){
+        return this.druzyny.size();
     }
-
-    public void setLiczbaDruzyn(int liczbaDruzyn) {
-        this.liczbaDruzyn = liczbaDruzyn;
-    }
-
+ 
     public HashMap<Integer, Druzyna> getDruzyny() {
         return druzyny;
     }
@@ -61,7 +55,7 @@ public class ListaStartowa {
     }
 
     public boolean fullListaStartowa() {
-        if (MAX_LICZBA_DRUZYN - liczbaDruzyn > 0) {
+        if (MAX_LICZBA_DRUZYN -  druzyny.size()> 0) {
             return false;
         } else {
             return true;
@@ -70,10 +64,9 @@ public class ListaStartowa {
 
     public void addDruzyna(Druzyna druzyna) {
         if (!fullListaStartowa()) {
-            if (!druzyny.containsValue(druzyna)) {
-                liczbaDruzyn++;
+            if (!druzyny.containsKey(druzyna.getNumerStartowy())) {
                 druzyny.put(druzyna.getNumerStartowy(), druzyna);
-                druzyna.getListyStartowe().add(this);
+                druzyna.addListaStartowa(this);
             }
         } else {
             System.out.println("Lista startowa " + this.nazwa + " jest już pełna");
@@ -81,10 +74,9 @@ public class ListaStartowa {
     }
 
     public void removeDruzyna(Druzyna druzyna) {
-        if (druzyny.containsValue(druzyna)) {
-            liczbaDruzyn--;
+        if (druzyny.containsKey(druzyna.getNumerStartowy())) {
             druzyny.remove(druzyna.getNumerStartowy());
-            druzyna.getListyStartowe().remove(this);
+            druzyna.removeListaStartowa(this);
         }
     }
 
