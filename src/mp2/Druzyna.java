@@ -134,8 +134,8 @@ public class Druzyna {
     }
     
     public void removeListaStartowa(ListaStartowa listaStartowa){
-        if(this.listyStartowe.contains(listaStartowa)){
-            this.listyStartowe.remove(listaStartowa);
+        if(listyStartowe.contains(listaStartowa)){
+            listyStartowe.remove(listaStartowa);
             listaStartowa.removeDruzyna(this);
         }
     }
