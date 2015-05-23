@@ -71,6 +71,7 @@ public class ListaStartowa {
     public void addDruzyna(Druzyna druzyna) {
         if (!fullListaStartowa()) {
             if (!druzyny.containsValue(druzyna)) {
+                liczbaDruzyn++;
                 druzyny.put(druzyna.getNumerStartowy(), druzyna);
                 druzyna.getListyStartowe().add(this);
             }
@@ -81,6 +82,7 @@ public class ListaStartowa {
 
     public void removeDruzyna(Druzyna druzyna) {
         if (druzyny.containsValue(druzyna)) {
+            liczbaDruzyn--;
             druzyny.remove(druzyna.getNumerStartowy());
             druzyna.getListyStartowe().remove(this);
         }
