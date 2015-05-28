@@ -49,4 +49,16 @@ public class Zawodnik extends Osoba {
             }
         }
     }
+    
+    public String printMeczeZawodnika(){
+        String output="Na zawodnika "+ this+" czekają mecze:";
+        for(ZawodnikWDruzynie zWD:zawodnikWDruzynach ){
+        }
+        return output;
+    }
+
+    @Override
+    public void printMecze() {
+        System.out.print(printMeczeZawodnika());
+    }
 }

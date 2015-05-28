@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author mtrzonkowski
  */
-public class Osoba {
+public abstract class Osoba {
     
     private String imie;
     private String nazwisko;
@@ -57,5 +57,5 @@ public class Osoba {
         this.dataUrodzenia = dataUrodzenia;
     }
     
-    
+    public abstract void printMecze();
 }

@@ -73,4 +73,9 @@ public class Sedzia extends Osoba {
         return output;
     }
 
+    @Override
+    public void printMecze() {
+        System.out.print(showListaMeczy());
+    }
+
 }
