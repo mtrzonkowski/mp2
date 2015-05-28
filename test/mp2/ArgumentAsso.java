@@ -31,8 +31,8 @@ public class ArgumentAsso {
     public void setUp() {
         zawodnik1 = new Zawodnik("Michał", "Trzonkowski", "Zakole Wiktorowo 30a", new Date(1983, 5, 17));
         zawodnik2 = new Zawodnik("Radosław", "Wichrowski", "Warszawa grochów", new Date(1981, 12, 12));
-        druzyna1 = new Druzyna("Cytrynowa śmierć", new Date(2012, 10, 01),1);
-        druzyna2 = new Druzyna("Brzeszczotem po klacie", new Date(2013, 2, 15),2);
+        druzyna1 = new Druzyna("Cytrynowa śmierć", new Date(2012, 10, 01));
+        druzyna2 = new Druzyna("Brzeszczotem po klacie", new Date(2013, 2, 15));
         
     }
 

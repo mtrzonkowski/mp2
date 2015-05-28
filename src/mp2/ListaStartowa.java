@@ -19,7 +19,7 @@ public class ListaStartowa {
     private String nazwa;
 
 
-    private HashMap<Integer, Druzyna> druzyny = new HashMap<Integer, Druzyna>();
+    private HashMap<String, Druzyna> druzyny = new HashMap<String, Druzyna>();
 
     public ListaStartowa(String kryterium, String nazwa, int MAX_LICZBA_DRUZYN) {
         this.MAX_LICZBA_DRUZYN = MAX_LICZBA_DRUZYN;
@@ -46,11 +46,11 @@ public class ListaStartowa {
         return this.druzyny.size();
     }
  
-    public HashMap<Integer, Druzyna> getDruzyny() {
+    public HashMap<String, Druzyna> getDruzyny() {
         return druzyny;
     }
 
-    public void setDruzyny(HashMap<Integer, Druzyna> druzyny) {
+    public void setDruzyny(HashMap<String, Druzyna> druzyny) {
         this.druzyny = druzyny;
     }
 
@@ -64,8 +64,8 @@ public class ListaStartowa {
 
     public void addDruzyna(Druzyna druzyna) {
         if (!fullListaStartowa()) {
-            if (!druzyny.containsKey(druzyna.getNumerStartowy())) {
-                druzyny.put(druzyna.getNumerStartowy(), druzyna);
+            if (!druzyny.containsKey(druzyna.getNazwa())) {
+                druzyny.put(druzyna.getNazwa(), druzyna);
                 druzyna.addListaStartowa(this);
             }
         } else {
@@ -74,8 +74,8 @@ public class ListaStartowa {
     }
 
     public void removeDruzyna(Druzyna druzyna) {
-        if (druzyny.containsKey(druzyna.getNumerStartowy())) {
-            druzyny.remove(druzyna.getNumerStartowy());
+        if (druzyny.containsKey(druzyna.getNazwa())) {
+            druzyny.remove(druzyna.getNazwa());
             druzyna.removeListaStartowa(this);
         }
     }
@@ -85,8 +85,8 @@ public class ListaStartowa {
         if (this.getDruzyny().isEmpty()) {
             output += "jest pusta.\n";
         } else {
-            for (Integer numerStartowy : druzyny.keySet()) {
-                output += numerStartowy + "\t" + druzyny.get(numerStartowy) + "\n";
+            for (String nazwa : druzyny.keySet()) {
+                output +=   druzyny.get(nazwa) + "\n";
             }
         }
         return output;
@@ -94,8 +94,8 @@ public class ListaStartowa {
 
     public void destroyListaStartowa() {
         if (!this.getDruzyny().isEmpty()) {
-            for (Integer numerStartowy : druzyny.keySet()) {
-                this.getDruzyny().get(numerStartowy).getListyStartowe().remove(this);
+            for (String nazwa : druzyny.keySet()) {
+                this.getDruzyny().get(nazwa).getListyStartowe().remove(this);
             }
             druzyny.clear();
         }
